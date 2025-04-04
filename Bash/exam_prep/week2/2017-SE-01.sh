@@ -27,7 +27,7 @@ fi
 
 
 if [[ $# -eq 2 ]] ; then
-    find ${1} -mindepth 1 -type f 2>/dev/null   | xargs -I{} stat -c "%h %n" {} | awk -v var=${2} '{if (var==$1) print $2}'
+    find ${1} -mindepth 1 -type f 2>/dev/null   | xargs -I{} stat -c "%h %n" {} | awk -v var=${2} ' var<=$1 { print $2 } '
 else
     find ${1} -mindepth 1 -type l 2>/dev/null -exec test ! -e {} \; -print
 fi
