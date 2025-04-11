@@ -24,10 +24,10 @@ if [[ $# -eq 2 && ! -f "${2}" ]]; then
     exit 2
 fi
 
-DIRECTORY=$1
+DIRECTORY="${1}"
 BROKEN_LINKS=0
 
-while read FILE TYPE ; do
+while read FILE TYPE; do
     if [[ $TYPE != 'N' ]]; then
         if [[ ${#} -eq 2 ]]; then
             echo "${FILE} -> $(readlink ${FILE})" >> ${2}
