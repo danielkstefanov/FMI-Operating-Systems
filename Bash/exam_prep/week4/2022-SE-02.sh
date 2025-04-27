@@ -41,7 +41,7 @@ for i in $(seq 0 3); do
 done
 
 while read line; do
-    if [[ ! -s "${line}" ]]; then
+    if [[ ! -e "${line}" ]]; then
         rm "${line}"
     fi
 done < <(find "${1}" -type l)
