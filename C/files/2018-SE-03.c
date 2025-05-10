@@ -149,3 +149,4 @@ void parse_interval(const char *interval)
         }
         return 0;
     }
+}
