@@ -132,7 +132,7 @@ int main(int argc, char* argv[]) {
         result ^= current_child_result;
     }
 
-        char output[1024];
+    char output[1024];
     int len = snprintf(output, sizeof(output), "result: %04x\n", result);
     write(STDOUT_FILENO, output, len);
 
