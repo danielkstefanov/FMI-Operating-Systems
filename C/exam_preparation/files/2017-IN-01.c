@@ -5,18 +5,6 @@
 #include <errno.h>
 #include <stdint.h>
 
-int wrapped_write(int fd, const void *buffer, int size)
-{
-    int write_size = write(fd, buffer, size);
-
-    if (write_size < 0)
-    {
-        err(6, "Cannot write in fd: %d!", fd);
-    }
-
-    return write_size;
-}
-
 off_t wrapped_lseek(int fd, off_t offset, int whence)
 {
     off_t ls = lseek(fd, offset, whence);
@@ -51,6 +39,18 @@ int wrapped_open(const char *filename, int flags, mode_t *mode)
     }
 
     return fd;
+}
+
+int wrapped_write(int fd, const void *buffer, int size)
+{
+    int write_size = write(fd, buffer, size);
+
+    if (write_size < 0)
+    {
+        err(6, "Cannot write in fd: %d!", fd);
+    }
+
+    return write_size;
 }
 
 int wrapped_read(int fd, void *buffer, int size)
